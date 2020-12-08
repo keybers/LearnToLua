@@ -90,30 +90,30 @@ public class ABManager : SingletonAutoMono<ABManager>
     }
 
     //同步加载
-    public object LoadRes(string abName,string resName)
+    public object LoadRes(string abName, string resName)
     {
         //加载AB包
         LoadRes(abName);
         //加载依赖包
         object obj = abDic[abName].LoadAsset(resName);
-        if(obj is GameObject)
+        if (obj is GameObject)
         {
             return Instantiate(obj as GameObject);
         }
         else
         {
             return obj;
-            
+
         }
 
     }
     //异步加载的方法,lua不支持泛型
-    public UnityEngine.Object LoadRes(string abName,string resName,Type type)
+    public UnityEngine.Object LoadRes(string abName, string resName, Type type)
     {
         //加载AB包
         LoadRes(abName);
         //加载依赖包
-        UnityEngine.Object obj = abDic[abName].LoadAsset(resName , type);//这样可以避免相同文件名，不同类型的资源加载
+        UnityEngine.Object obj = abDic[abName].LoadAsset(resName, type);//这样可以避免相同文件名，不同类型的资源加载
         if (obj is GameObject)
         {
             return Instantiate(obj);
@@ -130,7 +130,7 @@ public class ABManager : SingletonAutoMono<ABManager>
     /// <param name="abName">ab包名</param>
     /// <param name="resName">文件名</param>
     /// <returns></returns>
-    public T LoadRes<T>(string abName,string resName) where T : UnityEngine.Object
+    public T LoadRes<T>(string abName, string resName) where T : UnityEngine.Object
     {
         //同步加载，根据泛型加载
         //加载AB包
@@ -150,7 +150,7 @@ public class ABManager : SingletonAutoMono<ABManager>
     //ab包没有使用异步加载
     //知识从ab包中 加载逻辑 使用异步
     //根据名字异步加载
-    public void LoadResAsync(string abName,string resName,UnityAction<object> callback)
+    public void LoadResAsync(string abName, string resName, UnityAction<object> callback)
     {
         StartCoroutine(ReallyLoadResAsync(abName, resName, callback));
     }

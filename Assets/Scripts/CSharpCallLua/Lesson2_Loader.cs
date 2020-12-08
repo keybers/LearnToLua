@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using LuaInterface;
+﻿using LuaInterface;
 using UnityEngine;
 
 public class Lesson2_Loader : MonoBehaviour
@@ -29,14 +27,14 @@ public class Lesson2_Loader : MonoBehaviour
 
         //主要学习目标 学会通过toLua的解析器 自定义解析方式
         //要实现自定义解析方式 新建一个类 继承 LuaFileUtils 然后重写加载函数 就达到了自定义的目的
-        
 
-        
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

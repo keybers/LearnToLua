@@ -16,4 +16,5 @@
 
 print("**********第一个Lua脚本执行**********************")
 
-
+--通过启动Main启动Test
+require("CSharpCallLua/Test")

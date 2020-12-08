@@ -1,5 +1,5 @@
-﻿using System;
-using LuaInterface;
+﻿using LuaInterface;
+using System;
 
 public class LuaInterface_LuaOutWrap
 {

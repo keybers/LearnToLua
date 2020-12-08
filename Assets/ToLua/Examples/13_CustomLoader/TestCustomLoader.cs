@@ -1,9 +1,8 @@
-﻿using UnityEngine;
-using System.IO;
-using LuaInterface;
+﻿using LuaInterface;
+using UnityEngine;
 
 //use menu Lua->Copy lua files to Resources. 之后才能发布到手机
-public class TestCustomLoader : LuaClient 
+public class TestCustomLoader : LuaClient
 {
     string tips = "Test custom loader";
 

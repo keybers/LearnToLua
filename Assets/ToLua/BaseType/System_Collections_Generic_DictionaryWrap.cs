@@ -1,8 +1,8 @@
-﻿using System;
-using LuaInterface;
+﻿using LuaInterface;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Collections;
 
 public class System_Collections_Generic_DictionaryWrap
 {

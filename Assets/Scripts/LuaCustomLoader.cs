@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using LuaInterface;
+﻿using LuaInterface;
 using UnityEngine;
 
 public class LuaCustomLoader : LuaFileUtils
@@ -14,7 +11,7 @@ public class LuaCustomLoader : LuaFileUtils
 
         //如果没有lua后缀 加上最好 不管从Resources或者AB包中加载都不支持.lua后缀 所以toLua加上bytes后缀
         //我们自己可以加上.txt后缀
-        if(!fileName.EndsWith(".lua"))
+        if (!fileName.EndsWith(".lua"))
         {
             fileName += ".lua";
         }
@@ -25,25 +22,25 @@ public class LuaCustomLoader : LuaFileUtils
 
         //CSharpCallLua/Lesson2_Loader这样的名字 但是在AB包中我们需要文件名 所以需要拆分一下
         string[] strs = fileName.Split('/');
-        TextAsset luaCode = ABManager.GetInstance().LoadRes<TextAsset>("lua",strs[strs.Length - 1]);
-        if(luaCode != null)
+        TextAsset luaCode = ABManager.GetInstance().LoadRes<TextAsset>("lua", strs[strs.Length - 1]);
+        if (luaCode != null)
         {
             buffer = luaCode.bytes;
             Resources.UnloadAsset(luaCode);
         }
         //tolua的自带逻辑和自带类 我们不需要去热更新 直接从resources中加载
 
-        if(buffer == null)
+        if (buffer == null)
         {
             //第一种从Resources
             string path = "Lua/" + fileName;
             TextAsset text = Resources.Load<TextAsset>(path);
-            if(text != null)
+            if (text != null)
             {
                 buffer = text.bytes;
                 //卸载使用后文本资源
                 Resources.UnloadAsset(text);
-            }    
+            }
         }
 
 

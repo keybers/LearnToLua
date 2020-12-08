@@ -1,9 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using LuaInterface;
-using System;
-using System.Reflection;
-using System.Text;
+﻿using LuaInterface;
+using UnityEngine;
 
 public class TestString : LuaClient
 {

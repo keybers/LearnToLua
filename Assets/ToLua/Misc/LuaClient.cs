@@ -20,9 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 using UnityEngine;
-using System.Collections.Generic;
 using LuaInterface;
-using System.Collections;
 using System.IO;
 using System;
 #if UNITY_5_4_OR_NEWER
@@ -46,7 +44,7 @@ public class LuaClient : MonoBehaviour
 
     protected virtual LuaFileUtils InitLoader()
     {
-        return LuaFileUtils.Instance;       
+        return LuaFileUtils.Instance;
     }
 
     protected virtual void LoadLuaFiles()
@@ -65,8 +63,8 @@ public class LuaClient : MonoBehaviour
 
         if (LuaConst.openLuaSocket)
         {
-            OpenLuaSocket();            
-        }        
+            OpenLuaSocket();
+        }
 
         if (LuaConst.openLuaDebugger)
         {
@@ -83,7 +81,7 @@ public class LuaClient : MonoBehaviour
         }
 
         if (!LuaConst.openLuaSocket)
-        {                            
+        {
             OpenLuaSocket();
         }
 
@@ -97,7 +95,7 @@ public class LuaClient : MonoBehaviour
 
     [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
     static int LuaOpen_Socket_Core(IntPtr L)
-    {        
+    {
         return LuaDLL.luaopen_socket_core(L);
     }
 
@@ -113,8 +111,8 @@ public class LuaClient : MonoBehaviour
 
         luaState.BeginPreLoad();
         luaState.RegFunction("socket.core", LuaOpen_Socket_Core);
-        luaState.RegFunction("mime.core", LuaOpen_Mime_Core);                
-        luaState.EndPreLoad();                     
+        luaState.RegFunction("mime.core", LuaOpen_Mime_Core);
+        luaState.EndPreLoad();
     }
 
     //cjson 比较特殊，只new了一个table，没有注册库，这里注册一下
@@ -125,7 +123,7 @@ public class LuaClient : MonoBehaviour
         luaState.LuaSetField(-2, "cjson");
 
         luaState.OpenLibs(LuaDLL.luaopen_cjson_safe);
-        luaState.LuaSetField(-2, "cjson.safe");                               
+        luaState.LuaSetField(-2, "cjson.safe");
     }
 
     protected virtual void CallMain()
@@ -133,7 +131,7 @@ public class LuaClient : MonoBehaviour
         LuaFunction main = luaState.GetFunction("Main");
         main.Call();
         main.Dispose();
-        main = null;                
+        main = null;
     }
 
     protected virtual void StartMain()
@@ -150,20 +148,20 @@ public class LuaClient : MonoBehaviour
     }
 
     protected virtual void Bind()
-    {        
+    {
         LuaBinder.Bind(luaState);
-        DelegateFactory.Init();   
-        LuaCoroutine.Register(luaState, this);        
+        DelegateFactory.Init();
+        LuaCoroutine.Register(luaState, this);
     }
 
     protected void Init()
-    {        
+    {
         InitLoader();
         luaState = new LuaState();
         OpenLibs();
         luaState.LuaSetTop(0);
-        Bind();        
-        LoadLuaFiles();        
+        Bind();
+        LoadLuaFiles();
     }
 
     protected void Awake()
@@ -180,7 +178,7 @@ public class LuaClient : MonoBehaviour
     {
         luaState.Start();
         StartLooper();
-        StartMain();        
+        StartMain();
     }
 
     void OnLevelLoaded(int level)
@@ -194,7 +192,7 @@ public class LuaClient : MonoBehaviour
         }
 
         if (luaState != null)
-        {            
+        {
             luaState.RefreshDelegateMap();
         }
     }

@@ -20,10 +20,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 using System;
-using LuaInterface;
 
 namespace LuaInterface
-{    
+{
     public class LuaEvent : IDisposable
     {
         protected LuaState luaState;
@@ -34,12 +33,12 @@ namespace LuaInterface
         LuaFunction _remove = null;
         //LuaFunction _call = null;
 
-        public LuaEvent(LuaTable table)            
+        public LuaEvent(LuaTable table)
         {
             self = table;
             luaState = table.GetLuaState();
             self.AddRef();
-            
+
             _add = self.GetLuaFunction("Add");
             _remove = self.GetLuaFunction("Remove");
             //_call = self.GetLuaFunction("__call");            
@@ -47,7 +46,7 @@ namespace LuaInterface
 
         public void Dispose()
         {
-            self.Dispose();            
+            self.Dispose();
             _add.Dispose();
             _remove.Dispose();
             //_call.Dispose();
@@ -59,7 +58,7 @@ namespace LuaInterface
             //_call = null;
             _add = null;
             _remove = null;
-            self = null;            
+            self = null;
             luaState = null;
         }
 

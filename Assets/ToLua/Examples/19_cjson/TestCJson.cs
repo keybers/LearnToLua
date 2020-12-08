@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using LuaInterface;
+﻿using LuaInterface;
+using UnityEngine;
 
 public class TestCJson : LuaClient
 {
@@ -18,11 +17,11 @@ public class TestCJson : LuaClient
     {
         return new LuaResLoader();
     }
-    
+
     protected override void OpenLibs()
     {
         base.OpenLibs();
-        OpenCJson();                   
+        OpenCJson();
     }
 
     protected override void OnLoadFinished()
@@ -42,7 +41,7 @@ public class TestCJson : LuaClient
         func.Push(str);
         func.PCall();
         func.EndPCall();
-        func.Dispose();                        
+        func.Dispose();
     }
 
     //屏蔽，例子不需要运行

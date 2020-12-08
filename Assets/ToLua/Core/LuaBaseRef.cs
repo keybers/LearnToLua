@@ -22,7 +22,6 @@ SOFTWARE.
 
 using System;
 using System.Runtime.CompilerServices;
-using UnityEngine;
 
 namespace LuaInterface
 {
@@ -58,34 +57,34 @@ namespace LuaInterface
             }
 
             IsAlive = false;
-            Dispose(true);            
+            Dispose(true);
         }
 
         public void AddRef()
         {
-            ++count;            
+            ++count;
         }
 
         public virtual void Dispose(bool disposeManagedResources)
         {
             if (!beDisposed)
             {
-                beDisposed = true;   
+                beDisposed = true;
 
                 if (reference > 0 && luaState != null)
                 {
                     luaState.CollectRef(reference, name, !disposeManagedResources);
                 }
-                
+
                 reference = -1;
                 luaState = null;
                 count = 0;
-            }            
+            }
         }
 
         //慎用
         public void Dispose(int generation)
-        {                         
+        {
             if (count > generation)
             {
                 return;
@@ -106,7 +105,7 @@ namespace LuaInterface
 
         public override int GetHashCode()
         {
-            return RuntimeHelpers.GetHashCode(this);            
+            return RuntimeHelpers.GetHashCode(this);
         }
 
         public virtual int GetReference()
@@ -117,8 +116,8 @@ namespace LuaInterface
         public override bool Equals(object o)
         {
             if (o == null) return reference <= 0;
-            LuaBaseRef lr = o as LuaBaseRef;      
-            
+            LuaBaseRef lr = o as LuaBaseRef;
+
             if (lr == null || lr.reference != reference)
             {
                 return false;
@@ -155,12 +154,12 @@ namespace LuaInterface
             return a.reference > 0;
         }
 
-        public static bool operator == (LuaBaseRef a, LuaBaseRef b)
+        public static bool operator ==(LuaBaseRef a, LuaBaseRef b)
         {
             return CompareRef(a, b);
         }
 
-        public static bool operator != (LuaBaseRef a, LuaBaseRef b)
+        public static bool operator !=(LuaBaseRef a, LuaBaseRef b)
         {
             return !CompareRef(a, b);
         }

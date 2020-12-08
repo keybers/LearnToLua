@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using LuaInterface;
-using System.Collections;
+﻿using LuaInterface;
+using UnityEngine;
 
 [LuaInterface.NoToLua]
 public class TestInjection : MonoBehaviour

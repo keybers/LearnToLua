@@ -1,9 +1,6 @@
 ﻿//#define USE_PROTOBUF_NET
-using UnityEngine;
-using System.Collections;
 using LuaInterface;
-using System;
-using System.IO;
+using UnityEngine;
 
 #if USE_PROTOBUF_NET
 using ProtoBuf;

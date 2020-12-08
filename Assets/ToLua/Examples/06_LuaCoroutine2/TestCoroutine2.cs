@@ -1,9 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
-using LuaInterface;
+﻿using LuaInterface;
+using UnityEngine;
 
 //两套协同勿交叉使用，类unity原生，大量使用效率低
-public class TestCoroutine2 : LuaClient 
+public class TestCoroutine2 : LuaClient
 {
     string script =
     @"

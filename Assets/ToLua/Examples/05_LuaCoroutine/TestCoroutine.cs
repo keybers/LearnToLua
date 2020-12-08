@@ -1,16 +1,14 @@
-﻿using UnityEngine;
-using System;
-using System.Collections;
-using LuaInterface;
+﻿using LuaInterface;
+using UnityEngine;
 
 //例子5和6展示的两套协同系统勿交叉使用，此为推荐方案
-public class TestCoroutine : MonoBehaviour 
+public class TestCoroutine : MonoBehaviour
 {
     public TextAsset luaFile = null;
     private LuaState lua = null;
     private LuaLooper looper = null;
 
-	void Awake () 
+    void Awake()
     {
 #if UNITY_5 || UNITY_2017 || UNITY_2018
         Application.logMessageReceived += ShowTips;
@@ -18,10 +16,10 @@ public class TestCoroutine : MonoBehaviour
         Application.RegisterLogCallback(ShowTips);
 #endif        
         new LuaResLoader();
-        lua  = new LuaState();
+        lua = new LuaState();
         lua.Start();
         LuaBinder.Bind(lua);
-        DelegateFactory.Init();         
+        DelegateFactory.Init();
         looper = gameObject.AddComponent<LuaLooper>();
         looper.luaState = lua;
 
@@ -29,7 +27,7 @@ public class TestCoroutine : MonoBehaviour
         LuaFunction f = lua.GetFunction("TestCortinue");
         f.Call();
         f.Dispose();
-        f = null;        
+        f = null;
     }
 
     void OnApplicationQuit()

@@ -1,8 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
-using LuaInterface;
+﻿using LuaInterface;
 using System.Collections.Generic;
-using System;
+using UnityEngine;
 
 //需要导出委托类型如下：
 //System.Predicate<int>
@@ -165,7 +163,7 @@ public class UseList : LuaClient
         func.PCall();
         func.EndPCall();
         func.Dispose();
-        func = null;        
+        func = null;
     }
 
     string tips;

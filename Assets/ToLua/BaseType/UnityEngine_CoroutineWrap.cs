@@ -1,5 +1,4 @@
-﻿using System;
-using LuaInterface;
+﻿using LuaInterface;
 
 public class UnityEngine_CoroutineWrap
 {

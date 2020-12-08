@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using LuaInterface;
 using System.Collections.Generic;
-using LuaInterface;
+using UnityEngine;
 
 public sealed class TestAccount
 {
@@ -16,7 +16,7 @@ public sealed class TestAccount
     }
 }
 
-public class UseDictionary : MonoBehaviour 
+public class UseDictionary : MonoBehaviour
 {
     Dictionary<int, TestAccount> map = new Dictionary<int, TestAccount>();
 
@@ -63,7 +63,7 @@ public class UseDictionary : MonoBehaviour
             end                        
         ";
 
-	void Awake () 
+    void Awake()
     {
 #if UNITY_5 || UNITY_2017 || UNITY_2018
         Application.logMessageReceived += ShowTips;

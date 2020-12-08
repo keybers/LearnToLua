@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
-using LuaInterface;
+﻿using LuaInterface;
+using UnityEngine;
 
-public class TestInherit : MonoBehaviour 
+public class TestInherit : MonoBehaviour
 {
     private string script =
     @"  LuaTransform = 
@@ -71,7 +70,7 @@ public class TestInherit : MonoBehaviour
 
     LuaState lua = null;
 
-	void Start () 
+    void Start()
     {
 #if UNITY_5 || UNITY_2017 || UNITY_2018
         Application.logMessageReceived += ShowTips;
@@ -79,7 +78,7 @@ public class TestInherit : MonoBehaviour
         Application.RegisterLogCallback(ShowTips);
 #endif   
         new LuaResLoader();
-        lua = new LuaState();        
+        lua = new LuaState();
         lua.Start();
         LuaBinder.Bind(lua);
         lua.DoString(script, "TestInherit.cs");
@@ -88,16 +87,16 @@ public class TestInherit : MonoBehaviour
 
         for (int i = 0; i < 200000; i++)
         {
-            Vector3 v = transform.position;            
+            Vector3 v = transform.position;
             transform.position = v;
         }
 
         time = Time.realtimeSinceStartup - time;
-        Debugger.Log("c# Transform get set cost time: " + time);        
-        lua.Call("Test", transform, true);        
+        Debugger.Log("c# Transform get set cost time: " + time);
+        lua.Call("Test", transform, true);
         lua.Dispose();
-        lua = null;        
-	}
+        lua = null;
+    }
 
     string tips;
 

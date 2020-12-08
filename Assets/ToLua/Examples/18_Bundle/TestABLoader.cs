@@ -1,12 +1,11 @@
-﻿using UnityEngine;
+﻿using LuaInterface;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using LuaInterface;
-using System;
+using UnityEngine;
 
 //click Lua/Build lua bundle
-public class TestABLoader : MonoBehaviour 
+public class TestABLoader : MonoBehaviour
 {
     int bundleCount = int.MaxValue;
     string tips = null;
@@ -32,7 +31,7 @@ public class TestABLoader : MonoBehaviour
             --bundleCount;
             LuaFileUtils.Instance.AddSearchBundle(name, www.assetBundle);
             www.Dispose();
-        }                     
+        }
     }
 
     IEnumerator LoadFinished()
@@ -76,7 +75,7 @@ public class TestABLoader : MonoBehaviour
             string path = "file:///" + streamingPath + "/" + LuaConst.osDir + "/" + str;
 #endif
             string name = Path.GetFileNameWithoutExtension(str);
-            StartCoroutine(CoLoadBundle(name, path));            
+            StartCoroutine(CoLoadBundle(name, path));
         }
 
         yield return StartCoroutine(LoadFinished());
@@ -121,7 +120,7 @@ public class TestABLoader : MonoBehaviour
     }
 
     void OnBundleLoad()
-    {                
+    {
         LuaState state = new LuaState();
         state.Start();
         state.DoString("print('hello tolua#:'..tostring(Vector3.zero))");
@@ -131,5 +130,5 @@ public class TestABLoader : MonoBehaviour
         func.Dispose();
         state.Dispose();
         state = null;
-	}	
+    }
 }

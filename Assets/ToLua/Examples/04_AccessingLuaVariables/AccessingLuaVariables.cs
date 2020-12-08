@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using LuaInterface;
+﻿using LuaInterface;
+using UnityEngine;
 
-public class AccessingLuaVariables : MonoBehaviour 
+public class AccessingLuaVariables : MonoBehaviour
 {
     private string script =
         @"
@@ -21,7 +20,7 @@ public class AccessingLuaVariables : MonoBehaviour
             end
         ";
 
-	void Start () 
+    void Start()
     {
 #if UNITY_5 || UNITY_2017 || UNITY_2018
         Application.logMessageReceived += ShowTips;
@@ -68,10 +67,10 @@ public class AccessingLuaVariables : MonoBehaviour
             Debugger.Log("varTable[{0}], is {1}", i, list[i]);
         }
 
-        table.Dispose();                        
+        table.Dispose();
         lua.CheckTop();
         lua.Dispose();
-	}
+    }
 
     private void OnApplicationQuit()
     {

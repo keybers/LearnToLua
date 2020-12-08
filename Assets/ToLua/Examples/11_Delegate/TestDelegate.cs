@@ -1,10 +1,9 @@
-﻿using UnityEngine;
+﻿using LuaInterface;
 using System;
-using System.Collections.Generic;
-using LuaInterface;
+using UnityEngine;
 
 
-public class TestDelegate: MonoBehaviour
+public class TestDelegate : MonoBehaviour
 {
     private string script =
     @"                              
@@ -110,7 +109,7 @@ public class TestDelegate: MonoBehaviour
     LuaFunction AddEvent = null;
     LuaFunction AddSelfClick = null;
     LuaFunction RemoveSelfClick = null;
-   
+
     //需要删除的转LuaFunction为委托，不需要删除的直接加或者等于即可
     void Awake()
     {
@@ -162,7 +161,7 @@ public class TestDelegate: MonoBehaviour
         func.BeginPCall();
         func.Push(listener);
         func.PCall();
-        func.EndPCall();                
+        func.EndPCall();
     }
 
     //自动生成代码后拷贝过来
@@ -250,7 +249,7 @@ public class TestDelegate: MonoBehaviour
             LuaFunction func = state.GetFunction("DoClick1");
             TestEventListener.OnClick onClick = (TestEventListener.OnClick)DelegateTraits<TestEventListener.OnClick>.Create(func);
             listener.onClick += onClick;
-        }        
+        }
         else if (GUI.Button(new Rect(10, 310, 120, 40), " - Click1 in C#"))
         {
             tips = "";
@@ -305,7 +304,7 @@ public class TestDelegate: MonoBehaviour
     void Update()
     {
         state.Collect();
-        state.CheckTop();        
+        state.CheckTop();
     }
 
     void SafeRelease(ref LuaFunction luaRef)
@@ -317,7 +316,7 @@ public class TestDelegate: MonoBehaviour
         }
     }
 
-    string tips = "";    
+    string tips = "";
 
     void ShowTips(string msg, string stackTrace, LogType type)
     {

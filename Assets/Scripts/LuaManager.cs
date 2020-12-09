@@ -16,9 +16,13 @@ public class LuaManager : SingletonAutoMono<LuaManager>
         luaState = new LuaState();
         luaState.Start();
 
-        //委托初始化
-
+        //委托初始化 委托工厂初始化 想要C#和Lua相互访问使用委托 必须先初始化工厂 否则没办法使用
+        DelegateFactory.Init();
         //协程相关
+        //如果想让tolua协程跑起来 必须加一个函数
+        LuaLooper luaLooper = this.gameObject.AddComponent<LuaLooper>();
+        //将我们自己声明的解析器和lualoop绑定起来 
+        luaLooper.luaState = luaState;
 
         //Lua使用unity中的相关类
     }

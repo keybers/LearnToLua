@@ -40,6 +40,9 @@ public static class CustomSettings
         _DT(typeof(System.Action<int>)),
         _DT(typeof(System.Comparison<int>)),
         _DT(typeof(System.Func<int, int>)),
+        _DT(typeof(CustomDelegater)),
+        _DT(typeof(CustomDelegaterref)),
+        _DT(typeof(CustomCallParamsDelegater)),
     };
 
     //在这里添加你要导出注册到lua的类型列表

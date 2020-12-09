@@ -10,6 +10,8 @@ public static class LuaBinder
 		float t = Time.realtimeSinceStartup;
 		L.BeginModule(null);
 		LuaInterface_DebuggerWrap.Register(L);
+		LuaCallCSharpWrap.Register(L);
+		TestWrap.Register(L);
 		LuaProfilerWrap.Register(L);
 		L.RegFunction("CustomDelegater", CustomDelegater);
 		L.RegFunction("CustomDelegaterref", CustomDelegaterref);
@@ -19,6 +21,7 @@ public static class LuaBinder
 		LuaInterface_InjectTypeWrap.Register(L);
 		L.EndModule();
 		L.BeginModule("UnityEngine");
+		UnityEngine_DebugWrap.Register(L);
 		UnityEngine_ComponentWrap.Register(L);
 		UnityEngine_TransformWrap.Register(L);
 		UnityEngine_MaterialWrap.Register(L);
@@ -74,6 +77,9 @@ public static class LuaBinder
 		L.RegFunction("PCMReaderCallback", UnityEngine_AudioClip_PCMReaderCallback);
 		L.RegFunction("PCMSetPositionCallback", UnityEngine_AudioClip_PCMSetPositionCallback);
 		L.EndModule();
+		L.EndModule();
+		L.BeginModule("MyTest");
+		MyTest_Test2Wrap.Register(L);
 		L.EndModule();
 		L.BeginModule("System");
 		L.RegFunction("Action", System_Action);

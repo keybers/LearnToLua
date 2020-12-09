@@ -62,7 +62,12 @@ public static class CustomSettings
                         
         _GT(typeof(LuaInjectionStation)),
         _GT(typeof(InjectType)),
-        _GT(typeof(Debugger)).SetNameSpace(null),          
+        _GT(typeof(Debugger)).SetNameSpace(null),
+        _GT(typeof(Debug)),
+        _GT(typeof(LuaCallCSharp)),
+        _GT(typeof(Test)),
+        _GT(typeof(MyTest.Test2)),
+
 
 #if USING_DOTWEENING
         _GT(typeof(DG.Tweening.DOTween)),

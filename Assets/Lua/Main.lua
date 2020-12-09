@@ -17,4 +17,10 @@
 print("**********第一个Lua脚本执行**********************")
 
 --通过启动Main启动Test
-require("CSharpCallLua/Test")
+--require("CSharpCallLua/Test")
+
+
+
+
+--启动Lua调用的C#的逻辑脚本
+require("LuaCallCSharp/Lesson1_CallClass")

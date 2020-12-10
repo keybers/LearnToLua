@@ -23,4 +23,8 @@ print("**********第一个Lua脚本执行**********************")
 
 
 --启动Lua调用的C#的逻辑脚本
-require("LuaCallCSharp/Lesson1_CallClass")
+--require("LuaCallCSharp/Lesson1_CallClass")
+--require("LuaCallCSharp/Lesson2_Enum")
+--require("LuaCallCSharp/Lesson3_CallArray")
+--require("LuaCallCSharp/Lesson3_CallListDic")
+require("LuaCallCSharp/Lesson4_CallFunction")

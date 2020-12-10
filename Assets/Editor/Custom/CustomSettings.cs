@@ -64,9 +64,17 @@ public static class CustomSettings
         _GT(typeof(InjectType)),
         _GT(typeof(Debugger)).SetNameSpace(null),
         _GT(typeof(Debug)),
+
         _GT(typeof(LuaCallCSharp)),
         _GT(typeof(Test)),
         _GT(typeof(MyTest.Test2)),
+        _GT(typeof(PrimitiveType)),
+        _GT(typeof(testEnum)),
+        _GT(typeof(Lesson3)),
+        _GT(typeof(System.Int32)),
+        _GT(typeof(List<string>)),
+        _GT(typeof(Dictionary<int,string>)),
+        _GT(typeof(Lesson4)).AddExtendType(typeof(Tools)),
 
 
 #if USING_DOTWEENING

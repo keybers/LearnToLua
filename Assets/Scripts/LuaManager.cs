@@ -27,6 +27,9 @@ public class LuaManager : SingletonAutoMono<LuaManager>
         //将我们自己声明的解析器和lualoop绑定起来 
         luaLooper.luaState = luaState;
 
+        //Lua协程注册
+        LuaCoroutine.Register(luaState,this);
+
         //Lua使用unity中的相关类 绑定Lua解析器
         LuaBinder.Bind(luaState);
     }

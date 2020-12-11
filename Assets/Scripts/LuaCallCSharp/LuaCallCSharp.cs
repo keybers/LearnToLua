@@ -1,7 +1,10 @@
-﻿using System;
+﻿using System.Runtime.InteropServices;
+using System.Net.Http.Headers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 #region  Lesson1_CallClass
 public class Test
@@ -73,13 +76,108 @@ public class Lesson4
 }
 #endregion
 
+#region  Lesson5_CallFunction
+
+public class Lesson5
+{
+    public int RefFun(int a, ref int b,ref int c,int d)
+    {
+        b = a + d;
+        c = a - d;
+        return 100;
+    }
+
+    public int OutFun(int a, out int b,out int c, int d)
+    {
+        b = a;
+        c = d;
+        return 200;
+    }
+
+    public int RefOutFun(int a, out int b,ref int c)
+    {
+        b = a * 10;
+        c = a * 20;
+        return 300;
+    }
+}
+
+#endregion
+
+#region  Lesson6_CallFunction
+
+public class Lesson6
+{
+    public int Calc()
+    {
+        return 100;
+    }
+
+    public int Calc(int a)
+    {
+        return a;
+    }
+
+    public float Calc(float a)
+    {
+        Debug.Log("Float");
+        return a;
+    }
+
+    public string Calc(string a)
+    {
+        Debug.Log("string");
+        return a;
+    }
+
+    public int Calc(int a,int b)
+    {
+
+        return a + b;
+    }
+
+    public int Calc(int a,out int b)
+    {
+        b = 10;
+        return a + b;
+    }
+}
+
+#endregion
+
+#region  Lesson7_CallDelegateEvent
+
+public class Lesson7
+{
+    public UnityAction unityAction;
+    public event UnityAction eventAction;
+
+    public void DoUnityAction()
+    {
+        if(unityAction != null)
+        {
+            unityAction();
+        }
+    }
+
+    public void DoEvent()
+    {
+        if(eventAction != null)
+        {
+            eventAction();
+        }
+    }
+
+    public void ClearEvent()
+    {
+        eventAction = null;
+    }
+}
+
+#endregion
 
 
 public class LuaCallCSharp : MonoBehaviour
 {
-    // private void Start() {
-    //     Lesson4 lesson4 = new Lesson4();
-    //     lesson4.Move();
-        
-    // }
+
 }

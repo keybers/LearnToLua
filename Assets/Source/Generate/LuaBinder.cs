@@ -15,6 +15,9 @@ public static class LuaBinder
 		testEnumWrap.Register(L);
 		Lesson3Wrap.Register(L);
 		Lesson4Wrap.Register(L);
+		Lesson5Wrap.Register(L);
+		Lesson6Wrap.Register(L);
+		Lesson7Wrap.Register(L);
 		LuaProfilerWrap.Register(L);
 		L.RegFunction("CustomDelegater", CustomDelegater);
 		L.RegFunction("CustomDelegaterref", CustomDelegaterref);

@@ -8,7 +8,7 @@ public class LuaCustomLoader : LuaFileUtils
     {
         //如果想重新定义 解析lua的方式 那么只需要在该函数中去写逻辑
         Debug.Log("自定义解析方式");
-
+        
         //如果没有lua后缀 加上最好 不管从Resources或者AB包中加载都不支持.lua后缀 所以toLua加上bytes后缀
         //我们自己可以加上.txt后缀
         if (!fileName.EndsWith(".lua"))

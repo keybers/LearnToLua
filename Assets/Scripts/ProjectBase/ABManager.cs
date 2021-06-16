@@ -65,7 +65,8 @@ public class ABManager : SingletonAutoMono<ABManager>
         {
             //最终打包后的路径可能不是streamingAssets文件下
             abMain = AssetBundle.LoadFromFile(PathURL + MainABName);
-            abManiFest = abMain.LoadAsset<AssetBundleManifest>("AssetBundleManifest");//获取主包配置文件
+            //获取主包配置文件
+            abManiFest = abMain.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         }
 
         //获取依赖包的信息，加载主包

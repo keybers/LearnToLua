@@ -13,7 +13,7 @@ public class Lesson2_Loader : MonoBehaviour
         //声明Lua解析器 执行Lua代码
         LuaState luaState = new LuaState();
         luaState.Start();
-
+        
         //第一种 使用LuaState中的方法 AddSearchPath
         //luaState.AddSearchPath(Application.dataPath + "/Lua/CSharpCallLua");
         //luaState.Require("Lesson2_Loader");
@@ -21,7 +21,7 @@ public class Lesson2_Loader : MonoBehaviour
         //第二种 如果该文件 只属于Lua文件夹下 那么可以直接加父目录下
         luaState.Require("CSharpCallLua/Lesson2_Loader");
 
-        //测试 新建文件夹
+        //测试 新建文件夹 事实证明可以
         //luaState.AddSearchPath(Application.dataPath + "/MyLua");
         //luaState.Require("My");
 
@@ -29,12 +29,6 @@ public class Lesson2_Loader : MonoBehaviour
         //要实现自定义解析方式 新建一个类 继承 LuaFileUtils 然后重写加载函数 就达到了自定义的目的
 
 
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 }

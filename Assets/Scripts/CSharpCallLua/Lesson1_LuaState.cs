@@ -12,12 +12,11 @@ public class Lesson1_LuaState : MonoBehaviour
         LuaState luaState = new LuaState();
         //启动解析器
         luaState.Start();
-
+        
         //执行Lua代码
         luaState.DoString("print('你好lua')");
         //执行lua代码 并指名出处 方便调试的时候查看
         luaState.DoString("print('你好,lua')", "Lesson1_LuaState.cs");
-
 
         //执行Lua文件，可以跟后缀也可以不跟
         //luaState.DoFile("Main.lua");
@@ -31,13 +30,7 @@ public class Lesson1_LuaState : MonoBehaviour
 
         //销毁解析器
         luaState.Dispose();
-        //最好制空
+        //最好置空
         luaState = null;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

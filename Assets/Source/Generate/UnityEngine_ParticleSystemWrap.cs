@@ -24,6 +24,7 @@ public class UnityEngine_ParticleSystemWrap
 		L.RegFunction("Emit", Emit);
 		L.RegFunction("TriggerSubEmitter", TriggerSubEmitter);
 		L.RegFunction("ResetPreMappedBufferMemory", ResetPreMappedBufferMemory);
+		L.RegFunction("SetMaximumPreMappedBufferCounts", SetMaximumPreMappedBufferCounts);
 		L.RegFunction("New", _CreateUnityEngine_ParticleSystem);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
@@ -626,6 +627,23 @@ public class UnityEngine_ParticleSystemWrap
 		{
 			ToLua.CheckArgsCount(L, 0);
 			UnityEngine.ParticleSystem.ResetPreMappedBufferMemory();
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetMaximumPreMappedBufferCounts(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+			int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
+			UnityEngine.ParticleSystem.SetMaximumPreMappedBufferCounts(arg0, arg1);
 			return 0;
 		}
 		catch (Exception e)

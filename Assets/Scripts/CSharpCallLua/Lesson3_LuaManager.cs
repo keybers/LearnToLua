@@ -12,10 +12,4 @@ public class Lesson3_LuaManager : MonoBehaviour
         LuaManager.GetInstance().Init();
         LuaManager.GetInstance().Require("CSharpCallLua/Lesson2_Loader");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
